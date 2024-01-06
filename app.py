@@ -1,8 +1,6 @@
 import cv2
 import base64
-import os
-from openai import OpenAI
-import requests
+import openai
 
 
 # Load video
@@ -24,8 +22,7 @@ video.release()
 
 # Send frames to OpenAI
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-chat_completion = client.chat.completions.create(
+chat_completion = openai.chat.completions.create(
     model="gpt-4-vision-preview",
     max_tokens=200,
     messages=[
